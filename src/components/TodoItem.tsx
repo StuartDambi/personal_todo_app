@@ -1,4 +1,7 @@
 import PropTypes from "prop-types";
+import { IconButton, Button } from "@chakra-ui/react";
+import { DeleteIcon, RepeatIcon } from "@chakra-ui/icons";
+
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxState } from "../interfaces";
 import { markTodoAsDone, removeTodo } from "../store/actions/todoActions";
@@ -54,8 +57,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
           className="card-footer"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <button
-            className="btn btn-primary"
+          <Button
             onClick={() =>
               dispatch(
                 markTodoAsDone(
@@ -66,16 +68,34 @@ const TodoItem: React.FC<TodoItemProps> = ({
               )
             }
           >
-            Start
-          </button>
-          <button
-            className="btn btn-danger"
+            {status === "inprogress" ? "Mark as Done" : "Start"}
+          </Button>
+
+          {status === "inprogress" && (
+            <IconButton
+              aria-label="icon"
+              color="red.600"
+              icon={<RepeatIcon />}
+              title="Reset"
+              onClick={() =>
+                dispatch(
+                  markTodoAsDone(
+                    todoList,
+                    { id, title, description, status },
+                    "todo"
+                  )
+                )
+              }
+            />
+          )}
+          <IconButton
+            aria-label="icon"
+            color="red.600"
+            icon={<DeleteIcon />}
             onClick={() =>
               dispatch(removeTodo(todoList, { id, title, description, status }))
             }
-          >
-            Delete
-          </button>
+          />
         </div>
       </div>
     </div>

@@ -8,14 +8,6 @@ import { ReduxState, TodoItem as TodoInteface } from "../interfaces";
 const Home = () => {
   const { todoList } = useSelector((store: ReduxState) => store.tasks);
 
-  const todos = todoList.filter((item: TodoInteface) => item.status === "todo");
-  const inprogress = todoList.filter(
-    (item: TodoInteface) => item.status === "inprogress"
-  );
-  const completed = todoList.filter(
-    (item: TodoInteface) => item.status === "completed"
-  );
-
   return (
     <>
       <Header />
@@ -30,16 +22,22 @@ const Home = () => {
                     <div className="section-elements-title mb-30">
                       <h4>TO DO</h4>
                     </div>
-                    <div id="accordion">
-                      {todos.map((item: TodoInteface) => (
-                        <TodoItem
-                          title={item.title}
-                          description={item.description}
-                          id={item.id}
-                          status={item.status}
-                          statusUpdate="inprogress"
-                        />
-                      ))}
+                    <div
+                      id="accordion"
+                      onDrop={() => console.log("Yeah, something dropped")}
+                    >
+                      {todoList
+                        .filter((item: TodoInteface) => item.status === "todo")
+                        .map((item: TodoInteface, idx: number) => (
+                          <TodoItem
+                            key={idx}
+                            title={item.title}
+                            description={item.description}
+                            id={item.id}
+                            status={item.status}
+                            statusUpdate="inprogress"
+                          />
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -49,15 +47,20 @@ const Home = () => {
                       <h4>IN PROGRESS</h4>
                     </div>
                     <div id="accordion">
-                      {inprogress.map((item: TodoInteface) => (
-                        <TodoItem
-                          title={item.title}
-                          description={item.description}
-                          id={item.id}
-                          status={item.status}
-                          statusUpdate="completed"
-                        />
-                      ))}
+                      {todoList
+                        .filter(
+                          (item: TodoInteface) => item.status === "inprogress"
+                        )
+                        .map((item: TodoInteface, idx: number) => (
+                          <TodoItem
+                            key={idx}
+                            title={item.title}
+                            description={item.description}
+                            id={item.id}
+                            status={item.status}
+                            statusUpdate="completed"
+                          />
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -67,15 +70,20 @@ const Home = () => {
                       <h4>DONE</h4>
                     </div>
                     <div id="accordion">
-                      {completed.map((item: TodoInteface) => (
-                        <TodoItem
-                          title={item.title}
-                          description={item.description}
-                          id={item.id}
-                          status={item.status}
-                          statusUpdate="completed"
-                        />
-                      ))}
+                      {todoList
+                        .filter(
+                          (item: TodoInteface) => item.status === "completed"
+                        )
+                        .map((item: TodoInteface, idx: number) => (
+                          <TodoItem
+                            key={idx}
+                            title={item.title}
+                            description={item.description}
+                            id={item.id}
+                            status={item.status}
+                            statusUpdate="completed"
+                          />
+                        ))}
                     </div>
                   </div>
                 </div>
