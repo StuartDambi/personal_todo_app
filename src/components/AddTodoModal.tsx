@@ -59,10 +59,7 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
       });
       onClose();
     }
-    // console.log(state);
-    // dispatch(resetState());
   };
-  console.log(users);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -115,74 +112,6 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
         </ModalFooter>
       </ModalContent>
     </Modal>
-    // <div
-    //   className="modal fade"
-    //   id="addtodomodal"
-    //   tabIndex={-1}
-    //   role="dialog"
-    //   aria-labelledby="addtodomodal"
-    //   aria-hidden="true"
-    // >
-    //   <div className="modal-dialog" role="document">
-    //     <div className="modal-content">
-    //       <div className="modal-header">
-    //         <h5 className="modal-title" id="exampleModalLabel">
-    //           Add TODO Item
-    //         </h5>
-    //         <button
-    //           type="button"
-    //           className="close"
-    //           data-bs-dismiss="modal"
-    //           aria-label="Close"
-    //         >
-    //           <span aria-hidden="true">&times;</span>
-    //         </button>
-    //       </div>
-    //       <div className="modal-body">
-    //         <div className="contact-form-wrap">
-    //           <div className="contact-form">
-    //             <div className="contact-inner">
-    //               <input
-    //                 name="title"
-    //                 value={state.title}
-    //                 onChange={handleChange}
-    //                 type="text"
-    //                 placeholder="Title *"
-    //               />
-    //             </div>
-    //             <div className="contact-inner">
-    //               <input
-    //                 name="description"
-    //                 value={state.description}
-    //                 onChange={handleChange}
-    //                 type="text"
-    //                 placeholder="Description *"
-    //               />
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="modal-footer">
-    //         <button
-    //           type="button"
-    //           className="btn btn-secondary"
-    //           data-bs-dismiss="modal"
-    //         >
-    //           Close
-    //         </button>
-    //         <button
-    //           type="button"
-    //           className="btn btn-primary"
-    //           data-bs-dismiss="modal"
-    //           onClick={handleAddTodo}
-    //           disabled={state.description === "" || state.title === ""}
-    //         >
-    //           Save changes
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
