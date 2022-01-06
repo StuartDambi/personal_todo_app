@@ -96,7 +96,7 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
               onChange={handleChange}
             >
               {users.map((user: User) => (
-                <option key={user.email} value={user.email}>
+                <option key={user.email} value={user.name}>
                   {user.name}
                 </option>
               ))}
