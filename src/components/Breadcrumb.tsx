@@ -1,7 +1,39 @@
-import { Button } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Button, useDisclosure } from "@chakra-ui/react";
 import AddTodo from "./AddTodoModal";
+import { User } from "../interfaces";
 
 const Breadcrumb: React.FC = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [users, setUsers] = useState<User[]>([
+    {
+      name: "Stuart",
+      email: "stuart@wild.coffee",
+    },
+    {
+      name: "David",
+      email: "david@wild.coffee",
+    },
+    {
+      name: "Joan",
+      email: "joan@wild.coffee",
+    },
+  ]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("https://swapi.dev/people");
+        const data = await response.json();
+        setUsers(data.results);
+        data && console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   return (
     <>
       <div className="breadcrumb-area">
@@ -20,9 +52,7 @@ const Breadcrumb: React.FC = () => {
                   size="lg"
                   _hover={{ bg: "blue.500" }}
                   backgroundColor="blue.600"
-                  className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#addtodomodal"
+                  onClick={onOpen}
                 >
                   ADD TODO <i className="fa plus-circle"></i>
                 </Button>
@@ -31,7 +61,7 @@ const Breadcrumb: React.FC = () => {
           </div>
         </div>
       </div>
-      <AddTodo />
+      <AddTodo onClose={onClose} isOpen={isOpen} users={users} />
     </>
   );
 };

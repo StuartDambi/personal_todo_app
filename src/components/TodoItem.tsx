@@ -11,6 +11,7 @@ interface TodoItemProps {
   description: string;
   id: string;
   status: string;
+  user: string;
   statusUpdate: string;
 }
 
@@ -20,6 +21,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   id,
   status,
   statusUpdate,
+  user,
 }) => {
   const dispatch = useDispatch();
   const { todoList } = useSelector((store: ReduxState) => store.tasks);
@@ -62,7 +64,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
               dispatch(
                 markTodoAsDone(
                   todoList,
-                  { id, title, description, status },
+                  { id, title, description, status, user },
                   statusUpdate
                 )
               )
@@ -81,7 +83,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
                 dispatch(
                   markTodoAsDone(
                     todoList,
-                    { id, title, description, status },
+                    { id, title, description, status, user },
                     "todo"
                   )
                 )
@@ -93,7 +95,9 @@ const TodoItem: React.FC<TodoItemProps> = ({
             color="red.600"
             icon={<DeleteIcon />}
             onClick={() =>
-              dispatch(removeTodo(todoList, { id, title, description, status }))
+              dispatch(
+                removeTodo(todoList, { id, title, description, status, user })
+              )
             }
           />
         </div>
@@ -108,6 +112,7 @@ TodoItem.propTypes = {
   id: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   statusUpdate: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
 export default TodoItem;

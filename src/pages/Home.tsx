@@ -36,6 +36,7 @@ const Home = () => {
                             id={item.id}
                             status={item.status}
                             statusUpdate="inprogress"
+                            user={item.user}
                           />
                         ))}
                     </div>
@@ -59,6 +60,7 @@ const Home = () => {
                             id={item.id}
                             status={item.status}
                             statusUpdate="completed"
+                            user={item.user}
                           />
                         ))}
                     </div>
@@ -82,6 +84,7 @@ const Home = () => {
                             id={item.id}
                             status={item.status}
                             statusUpdate="completed"
+                            user={item.user}
                           />
                         ))}
                     </div>
