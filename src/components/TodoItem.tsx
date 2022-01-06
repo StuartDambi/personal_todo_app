@@ -59,19 +59,21 @@ const TodoItem: React.FC<TodoItemProps> = ({
           className="card-footer"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <Button
-            onClick={() =>
-              dispatch(
-                markTodoAsDone(
-                  todoList,
-                  { id, title, description, status, user },
-                  statusUpdate
+          {status !== "completed" ? (
+            <Button
+              onClick={() =>
+                dispatch(
+                  markTodoAsDone(
+                    todoList,
+                    { id, title, description, status, user },
+                    statusUpdate
+                  )
                 )
-              )
-            }
-          >
-            {status === "inprogress" ? "Mark as Done" : "Start"}
-          </Button>
+              }
+            >
+              {status === "inprogress" ? "Mark as Done" : "Start"}
+            </Button>
+          ) : null}
 
           {status === "inprogress" && (
             <IconButton
