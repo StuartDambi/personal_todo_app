@@ -50,6 +50,14 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
   const handleAddTodo = () => {
     if (state.description !== "" && state.title !== "") {
       dispatch(addTodo(todoList, { ...state, id: uuidV4() }));
+      setState({
+        id: "",
+        title: "",
+        description: "",
+        status: "todo",
+        user: "",
+      });
+      onClose();
     }
     // console.log(state);
     // dispatch(resetState());
