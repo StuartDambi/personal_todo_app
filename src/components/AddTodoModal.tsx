@@ -60,7 +60,7 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create your account</ModalHeader>
+        <ModalHeader>Add ToDO </ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
