@@ -36,7 +36,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
             aria-expanded="true"
             aria-controls={id}
           >
-            {title}{" "}
+            {title} {user}
             <span>
               {" "}
               <i className="fas fa-chevron-down"></i>
