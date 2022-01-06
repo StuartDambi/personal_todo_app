@@ -24,7 +24,9 @@ const AddTodo = () => {
   };
 
   const handleAddTodo = () => {
-    dispatch(addTodo(todoList, { ...state, id: uuidV4() }));
+    if (state.description !== "" && state.title !== "") {
+      dispatch(addTodo(todoList, { ...state, id: uuidV4() }));
+    }
     // console.log(state);
     // dispatch(resetState());
   };
@@ -90,6 +92,7 @@ const AddTodo = () => {
               className="btn btn-primary"
               data-bs-dismiss="modal"
               onClick={handleAddTodo}
+              disabled={state.description === "" || state.title === ""}
             >
               Save changes
             </button>

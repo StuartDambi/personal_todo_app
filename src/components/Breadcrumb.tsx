@@ -18,6 +18,7 @@ const Breadcrumb: React.FC = () => {
                   type="button"
                   color="white"
                   size="lg"
+                  _hover={{ bg: "blue.500" }}
                   backgroundColor="blue.600"
                   className="btn btn-primary"
                   data-bs-toggle="modal"
